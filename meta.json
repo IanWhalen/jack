@@ -2,13 +2,13 @@
   "$schema": "https://dl.viam.dev/module.schema.json",
   "module_id": "ianwhalen:jack",
   "visibility": "public",
-  "url": "",
+  "url": "https://github.com/ianwhalen/jack",
   "description": "Modular generic component: jack",
   "models": [
     {
       "api": "rdk:component:generic",
       "model": "ianwhalen:jack:jack",
-      "short_description": "Provide a short (100 characters or less) description of this model here",
+      "short_description": "Jack is a modular generic component",
       "markdown_link": "README.md#model-ianwhalenjackjack"
     }
   ],
