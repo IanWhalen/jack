@@ -1,4 +1,3 @@
-import asyncio
 from typing import Any, ClassVar, Dict, Mapping, Optional, Sequence, Tuple
 
 from typing_extensions import Self
@@ -15,16 +14,6 @@ class Jack(Generic, EasyResource):
     # To enable debug-level logging, either run viam-server with the --debug option,
     # or configure your resource/machine to display debug logs.
     MODEL: ClassVar[Model] = Model(ModelFamily("ianwhalen", "jack"), "jack")
-
-    def __init__(self, name: str):
-        super().__init__(name)
-        self._debug_task = None
-
-    async def _debug_logger(self):
-        """Background task that logs 'working!' every 5 seconds"""
-        while True:
-            self.logger.info("working!")
-            await asyncio.sleep(5)
 
     @classmethod
     def new(
@@ -68,13 +57,6 @@ class Jack(Generic, EasyResource):
             config (ComponentConfig): The new configuration
             dependencies (Mapping[ResourceName, ResourceBase]): Any dependencies (both required and optional)
         """
-        # Start the debug logger task if it's not already running
-        if self._debug_task is None or self._debug_task.done():
-            self._debug_task = asyncio.create_task(self._debug_logger())
-            self.logger.info(
-                "Debug logger started - will log 'working!' every 5 seconds"
-            )
-
         return super().reconfigure(config, dependencies)
 
     async def do_command(
