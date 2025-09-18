@@ -18,6 +18,7 @@
   "first_run": "",
   "build": {
     "build": "./build.sh",
+    "setup": "./setup.sh",
     "path": "dist/archive.tar.gz",
     "arch": [
       "linux/amd64",
